@@ -1,0 +1,8 @@
+build/*
+build.js
+node_modules/*
+.coveralls.*
+coverage/*
+.nyc_output
+.secrets.txt
+package-lock.json

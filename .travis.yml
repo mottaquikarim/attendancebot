@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "8"
+install:
+  - cd ./app
+  - npm install
+before_script:
+  - export COVERAGE_TOKEN=$COVERAGE_TOKEN
+  - export AIRTABLE_TEST_API_KEY=$AIRTABLE_TEST_API_KEY
+  - export TRAVIS_TEST_ENV="1"
+script:
+  - npm run write-coveralls
+  - npm test

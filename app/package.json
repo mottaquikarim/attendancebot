@@ -1,0 +1,31 @@
+{
+  "name": "potd",
+  "version": "1.0.0",
+  "description": "Daily, automated problem of the day slack notifications",
+  "main": "index.js",
+  "scripts": {
+    "write-coveralls": "rm -f .coveralls.yml && echo \"repo_token:$COVERAGE_TOKEN\" >> .coveralls.yml",
+    "test-ava": "$(npm bin)/ava",
+    "test": "$(npm bin)/nyc $(npm bin)/ava && $(npm bin)/nyc report --reporter=text-lcov | $(npm bin)/coveralls",
+    "deploy": "chmod +x ./deploy.sh && ./deploy.sh"
+  },
+  "author": "Mottaqui Karim",
+  "license": "ISC",
+  "dependencies": {
+    "airtable": "^0.5.1",
+    "moment": "^2.20.1",
+    "superagent": "^3.8.2"
+  },
+  "devDependencies": {
+    "ava": "^0.24.0",
+    "babel-cli": "^6.26.0",
+    "babel-minify": "^0.2.0",
+    "babel-preset-env": "^1.6.1",
+    "babelify": "^8.0.0",
+    "browserify": "^15.1.0",
+    "coveralls": "^3.0.0",
+    "nyc": "^11.4.1",
+    "uglify-js": "^3.3.6",
+    "wt-cli": "^8.3.0"
+  }
+}

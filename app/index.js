@@ -54,7 +54,7 @@ const getConfigs = (secrets = {}) => ({
 })
 
 const determineRunnable = slack => {
-    const now = moment();
+    const now = moment().subtract(5, 'hours');
     return slack.days.reduce((bool, day) => {
         if (bool) return true;
         if (now.format('dddd').toLowerCase() === day) bool = true;
@@ -85,7 +85,7 @@ const runTask = (context, cb) => {
             const presence = arg.presence.presence;
             const isPresent = presence === 'active';
             const emoji = isPresent ? ':white_check_mark:' : ':x:';
-            const payload = `${emoji} <@${arg.member}> is ${isPresent ? 'present' : 'present but NOT active'} on ${moment().format('MMMM Do YYYY, h:mm a')}`
+            const payload = `${emoji} <@${arg.member}> is ${isPresent ? 'present' : 'present but NOT active'} on ${moment().subtract(5, 'hours').format('MMMM Do YYYY, h:mm a')}`
             return postToSlack(slack.webhook, payload);
         })))
         .then(_ => {

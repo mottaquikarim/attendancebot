@@ -4,7 +4,7 @@
 
 *Automated attendance checker via slack.*
 
-Simple serverless script that will look for query for user presence as a means of determining attendance.
+Simple serverless script that will query for user presence as a means of determining attendance.
 
 The daily portion is achieved with a configured CRON job on [Webtask](https://webtask.io/). This job will invoke a function that POSTs to a [Slack Incoming Webhook](https://api.slack.com/incoming-webhooks). We query slack for channels created on the day of execution (assuming a fresh channel has been started pertaining to contents of current lecture) and based on those channels we further check for a keyword (defaults to `lecture`). Based on members in channels that match the above two criteria, we query for presence and push to another slack channel for measurement.
 
